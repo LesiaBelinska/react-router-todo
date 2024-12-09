@@ -16,23 +16,41 @@ const HomePage = () => {
         console.log(error);
       });
   }, []);
-    
-    const addNewTodo = (taskText) => {
-        const newTodo = { text: taskText, status: false }; 
-        api
-          .createTodo(newTodo)
-          .then((createdTodo) => {
-            setTodos((prevTodos) => [...prevTodos, createdTodo]); 
-          })
-          .catch((error) => {
-            console.error("Error creating todo:", error);
-          });
-    }
+
+  const addNewTodo = (taskText) => {
+    const newTodo = { text: taskText, status: false };
+    api
+      .createTodo(newTodo)
+      .then((createdTodo) => {
+        setTodos((prevTodos) => [...prevTodos, createdTodo]);
+      })
+      .catch((error) => {
+        console.error("Error creating todo:", error);
+      });
+  };
+
+  const toggleTodoStatus = (id, currentStatus) => {
+    const updatedStatus = !currentStatus; 
+    api
+      .updateTodo(id, { status: updatedStatus })
+      .then((updatedTodo) => {
+        setTodos((prevTodos) =>
+          prevTodos.map((todo) =>
+            todo.id === id ? { ...todo, status: updatedTodo.status } : todo
+          )
+        );
+      })
+      .catch((error) => {
+        console.error("Error updating todo:", error);
+      });
+  };
 
   return (
     <>
-      <TodoForm onSubmit={addNewTodo}/>
-      <TodoList todos={todos}/>
+      <div className={s.container}>
+        <TodoForm onSubmit={addNewTodo} />
+        <TodoList todos={todos} onToggleStatus={toggleTodoStatus} />
+      </div>
     </>
   );
 };
