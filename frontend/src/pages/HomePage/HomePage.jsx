@@ -45,11 +45,23 @@ const HomePage = () => {
       });
   };
 
+  const deleteTodo = (id) => {
+    api
+      .deleteTodo(id)
+      .then(() => {
+        setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+      })
+      .catch((error) => {
+        console.error("Error deleting todo:", error);
+      });
+  };
+
   return (
     <>
       <div className={s.container}>
+        <h1 className={s.title}>To-Do List</h1>
         <TodoForm onSubmit={addNewTodo} />
-        <TodoList todos={todos} onToggleStatus={toggleTodoStatus} />
+        <TodoList todos={todos} onToggleStatus={toggleTodoStatus} onDeleteTodo={deleteTodo} />
       </div>
     </>
   );
