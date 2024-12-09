@@ -1,14 +1,16 @@
 import s from "./TodoItem.module.css";
 
-const TodoItem = ({ id, taskText, taskStatus, onDeleteTodo }) => {
-  const getTaskStatus = () => (taskStatus ? "done" : "");
+const TodoItem = ({ id, taskText, taskStatus, onToggleStatus, onDeleteTodo }) => {
+  const getTaskStatus = () => (taskStatus ? s.done : "");
 
   return (
     <li className={`${s.taskItem} ${getTaskStatus()}`}>
-      <label>
+      <label className={s.label}>
         <input
           className={`${s.taskInput} ${getTaskStatus()}`}
           type="checkbox"
+          checked={taskStatus}
+          onChange={()=> onToggleStatus(id, taskStatus)}
         />
         {taskText}
       </label>
