@@ -1,7 +1,7 @@
 import TodoItem from "../TodoItem/TodoItem.jsx";
 import s from "./TodoList.module.css";
 
-const TodoList = ({todos, onDeleteTodo}) => {
+const TodoList = ({todos, onToggleStatus, onDeleteTodo}) => {
 
     return (
         <ul className={s.list}>
@@ -12,6 +12,7 @@ const TodoList = ({todos, onDeleteTodo}) => {
                         id={todo.id}
                         taskText={todo.text}
                         taskStatus={todo.status}
+                        onToggleStatus={onToggleStatus}
                         onDeleteTodo={onDeleteTodo}
                     />
                 )
