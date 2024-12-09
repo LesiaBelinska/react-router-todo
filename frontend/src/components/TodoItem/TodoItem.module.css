@@ -16,7 +16,7 @@
     color: white;
   }
 
-.done label {
+.done .label {
   text-decoration: line-through;
 }
 
