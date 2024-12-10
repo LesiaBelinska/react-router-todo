@@ -1,4 +1,15 @@
 .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 2px solid rgba(61, 47, 55, 0.2);
     box-shadow: 1px rgba(20, 9, 16, 0.2);
+}
+
+.header.light {
+    background-color: #ffffff;
+}
+
+.header.dark {
+    background-color: #b2c9d4;
 }
