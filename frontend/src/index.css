@@ -45,6 +45,10 @@ img {
   height: auto;
 }
 
+ul {
+  padding: 0;
+}
+
 li {
   margin: 0px;
   padding: 0px;
