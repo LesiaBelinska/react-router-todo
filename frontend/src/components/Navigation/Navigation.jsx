@@ -1,11 +1,17 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
+import { ThemeContext } from "../../context/ThemeContext";
 import s from "./Navigation.module.css";
 
 const Navigation = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <nav>
-      <ul className={s.list}>
+      <ul
+        className={`${s.list} ${theme === "dark" ? s.dark : s.light}`}
+      >
         <li className={s.item}>
           <NavLink
             to="/"
