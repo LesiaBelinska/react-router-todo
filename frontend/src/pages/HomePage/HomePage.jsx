@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { toast } from "react-hot-toast";
 
 import TodoForm from "../../components/TodoForm/TodoForm.jsx";
 import TodoList from "../../components/TodoList/TodoList.jsx";
@@ -23,6 +24,7 @@ const HomePage = () => {
       .createTodo(newTodo)
       .then((createdTodo) => {
         setTodos((prevTodos) => [...prevTodos, createdTodo]);
+        toast.success("Todo successfully added!");
       })
       .catch((error) => {
         console.error("Error creating todo:", error);
@@ -39,6 +41,11 @@ const HomePage = () => {
             todo.id === id ? { ...todo, status: updatedTodo.status } : todo
           )
         );
+        toast.success(
+          `Todo status updated to ${
+            updatedStatus ? "completed" : "incomplete"
+          }!`
+        );
       })
       .catch((error) => {
         console.error("Error updating todo:", error);
@@ -50,6 +57,7 @@ const HomePage = () => {
       .deleteTodo(id)
       .then(() => {
         setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+        toast.success("Todo successfully deleted!");
       })
       .catch((error) => {
         console.error("Error deleting todo:", error);
