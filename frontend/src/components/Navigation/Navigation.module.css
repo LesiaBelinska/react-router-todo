@@ -5,7 +5,14 @@
 .link {
     font-size: 36px;
     font-weight: 500;
-    color: #7f9eb2;
+}
+
+.light .link {
+color: #7f9eb2;
+}
+
+.dark .link {
+color: #ffffff;
 }
 
 .activeLink {
