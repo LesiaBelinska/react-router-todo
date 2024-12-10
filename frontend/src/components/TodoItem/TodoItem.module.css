@@ -12,9 +12,13 @@
 }
 
 .taskItem:hover {
-    background-color: #7f9eb2;
-    color: white;
-  }
+  background-color: #7f9eb2;
+  color: white;
+}
+
+.label {
+  display: flex;
+}
 
 .done .label {
   text-decoration: line-through;
