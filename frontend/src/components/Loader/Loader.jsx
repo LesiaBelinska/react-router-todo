@@ -4,7 +4,7 @@ import s from "./Loader.module.css";
 
 const Loader = () => {
   return (
-    <div className={s.Loader}>
+    <div className={s.loader}>
       <TailSpin
         height="100"
         width="100"
